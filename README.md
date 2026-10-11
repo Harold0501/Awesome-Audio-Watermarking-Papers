@@ -41,6 +41,10 @@ I categorize these papers into seven types: **Post-Processing**, **Key-based WM*
 |2025|IEEE Transactions on Dependable and Secure Computing|When Unlearnable Examples Cooperate With Watermarking: A Dual Voice Data Protection Against Unauthorized Exploitation (Volto)|Copyright Protection|[Paper](https://ieeexplore.ieee.org/abstract/document/11316260)|-|
 |2026|Interspeech|DuraMark: Duration-Embedded Watermarking in LLM-based TTS|Generative|[Paper](https://arxiv.org/pdf/2606.15264)|[Code](https://github.com/muzw/DuraMark)|
 |2026|Interspeech|Latent-Mark: An Audio Watermark Robust to Neural Codec Compression|Post-Processing|[Paper](https://arxiv.org/pdf/2603.05310)|[Code](https://github.com/yenshan0530/Latent-Mark)|
+|2026|Interspeech|Countering Neural Audio Codec Distortions in Watermarking with Adaptive Restoration|Post-Processing|[Paper](https://www.isca-archive.org/interspeech_2026/park26d_interspeech.pdf)|-|
+|2026|Interspeech|AudioNoisePrints: Model-free audio watermarking using spatial correlation in flow matching TTS|Generative|[Paper](https://www.isca-archive.org/interspeech_2026/tse26_interspeech.pdf)|-|
+|2026|Interspeech|VoxWatermark: A Large-Scale Benchmark for Audio Watermark Detection under Perturbations|Benchmark|[Paper](https://www.isca-archive.org/interspeech_2026/sedaghati26_interspeech.pdf)|[Code](https://github.com/wailywang/VoxWatermark)|
+|2026|Interspeech|Phoneme-Aware Mamba Watermark: An Active Defense System Against Purified Speech Deepfakes|Identity Protection|[Paper](https://www.isca-archive.org/interspeech_2026/shao26_interspeech.pdf)|-|
 |2026|ICME|Feature-Aligned Speech Watermarking for Robustness to Reconstruction Distortions (AlignMark)|Post-Processing|[Paper](https://arxiv.org/pdf/2606.11828)|[Code](https://huggingface.co/haiyunli/AlignMark/tree/main)|
 |2026|Odyssey|Latent Secret Spin: Keyed Orthogonal Rotations for Blind Speech Watermarking in Anisotropic Latent Spaces|Key-based WM|[Paper](https://www.eurecom.edu/en/publication/8752)|-|
 |2026|ICASSP|AURA: A Stegaformer-Based Scalable Deep Audio Watermark with Extreme Robustness|Post-Processing|[Paper](https://ieeexplore.ieee.org/abstract/document/11462806)|-|
@@ -162,6 +166,18 @@ Paper: https://arxiv.org/pdf/2603.05310
 
 Code: https://github.com/yenshan0530/Latent-Mark
 
+**Countering Neural Audio Codec Distortions in Watermarking with Adaptive Restoration**
+
+Interspeech 2026
+
+Sungho Park, Thien An Nguyen, Souhwan Jung
+
+- Insert a codec-aware restoration stage before watermark extraction to recover watermark-relevant spectrogram details damaged by neural audio codecs.
+- Combine a ConvNeXt-based U-Net with a lightweight codec classifier that dynamically selects a codec-specific restoration model.
+- Improve bitwise watermark accuracy from near-random levels to over 98% for residual-vector-quantization-based codecs across a broad range of neural codecs.
+
+Paper: https://www.isca-archive.org/interspeech_2026/park26d_interspeech.pdf
+
 **Feature-Aligned Speech Watermarking for Robustness to Reconstruction Distortions (AlignMark)**
 
 ICME 2026
@@ -281,6 +297,18 @@ Paper: https://arxiv.org/pdf/2606.15264
 
 Code: https://github.com/muzw/DuraMark
 
+**AudioNoisePrints: Model-free audio watermarking using spatial correlation in flow matching TTS**
+
+Interspeech 2026
+
+Timothy Tin-Long Tse, Jian Zhu, Aidan Pine, Mengzhe Geng
+
+- Introduce a training-free watermarking pipeline for flow-matching and diffusion TTS that exploits spatial correlations between the initial Gaussian noise and the generated audio.
+- Detect provenance with cosine correlation while avoiding TTS retraining, post-hoc audio modification, and additional computation during generation.
+- Extend the approach with a lightweight detector for stronger augmentations and demonstrate the same correlation property across F5-TTS, Matcha-TTS, and DiffWave.
+
+Paper: https://www.isca-archive.org/interspeech_2026/tse26_interspeech.pdf
+
 ## Benchmark / Surveys
 
 **AudioMarkBench: Benchmarking Robustness of Audio Watermarking**
@@ -308,6 +336,20 @@ Yizhu Wen, Ashwin Innuganti, Aaron Bien Ramos, Hanqing Guo, Qiben Yan
 Paper: https://arxiv.org/pdf/2503.19176
 
 Code: https://sokaudiowm.github.io/
+
+**VoxWatermark: A Large-Scale Benchmark for Audio Watermark Detection under Perturbations**
+
+Interspeech 2026
+
+Farnaz Sedaghati, Yuxi Wang, Zicheng Weng, Wei Rao
+
+- Construct a detection-oriented benchmark containing 91.09 million samples and approximately 126,514 hours of multilingual, multi-source audio produced with 10 neural and traditional watermarking methods.
+- Introduce no-box, black-box, and white-box perturbation protocols to evaluate watermark detectors under realistic distribution shifts and adversarial conditions.
+- Propose AudioWMD as a unified baseline for large-scale, multi-method, cross-distribution watermark detection.
+
+Paper: https://www.isca-archive.org/interspeech_2026/sedaghati26_interspeech.pdf
+
+Code: https://github.com/wailywang/VoxWatermark
 
 ## Identity / Copyright Protection
 
@@ -384,6 +426,18 @@ Yunjie Ge, Ruxi Gu, Yuchen Liu, Lingchen Zhao, Bo Du, Qian Wang
 - Introduce the first dual-function unlearnable audio, which not only discourages the unauthorized use of user data by model trainers but also empowers users to detect the misuse of their data via a watermark.
 
 Paper: https://ieeexplore.ieee.org/abstract/document/11316260
+
+**Phoneme-Aware Mamba Watermark: An Active Defense System Against Purified Speech Deepfakes**
+
+Interspeech 2026
+
+Yanda Shao, Mengke Zhang, Zhixin Lin, Tianyi Yang
+
+- Embed speaker-identity bitstrings with a bidirectional Mamba-based encoder so that the watermark transfers from protected speech to cloned speech.
+- Use phoneme-guided stable spectral regions and purification-aware adversarial training to preserve the watermark against the diffusion-based PhonePuRe attack.
+- Achieve near-100% source-tracing accuracy on cloned speech with approximately one-second latency while maintaining high perceptual quality.
+
+Paper: https://www.isca-archive.org/interspeech_2026/shao26_interspeech.pdf
 
 ## Integrity Protection
 
